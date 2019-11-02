@@ -138,6 +138,7 @@ public class StringUtilsTest {
     private void assertAbbreviateWithOffset(final String expected, final int offset, final int maxWidth) {
         final String abcdefghijklmno = "abcdefghijklmno";
         final String message = "abbreviate(String,int,int) failed";
+
         final String actual = StringUtils.abbreviate(abcdefghijklmno, offset, maxWidth);
         if (offset >= 0 && offset < abcdefghijklmno.length()) {
             assertTrue(actual.indexOf((char) ('a' + offset)) != -1,
@@ -146,7 +147,18 @@ public class StringUtilsTest {
         assertTrue(actual.length() <= maxWidth,
                 message + " -- should not be greater than maxWidth");
         assertEquals(expected, actual, message);
+
     }
+    @Test
+    public void testSomething(){
+        //We are using these variables
+        final String input = "much too long text";
+        final String pass = "much too long";
+
+        //This is the test we want to pass
+        assertEquals(pass, StringUtils.abbreviate(input, "", 13));
+    }
+
 
     private void innerTestSplit(final char separator, final String sepStr, final char noMatch) {
         final String msg = "Failed on separator hex(" + Integer.toHexString(separator) +

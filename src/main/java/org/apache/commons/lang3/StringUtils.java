@@ -290,8 +290,21 @@ public class StringUtils {
      * @throws IllegalArgumentException if the width is too small
      * @since 3.6
      */
+
+
+    //THIS IS THE ONE WE WANT
     public static String abbreviate(final String str, final String abbrevMarker, final int maxWidth) {
-        return abbreviate(str, abbrevMarker, 0, maxWidth);
+        String x = StringUtils.substring(str, 0, maxWidth);
+
+        if(abbrevMarker == "") {
+
+            return abbreviate(x, abbrevMarker, 0, maxWidth);
+        } else {
+            return abbreviate(str, abbrevMarker, 0, maxWidth);
+        }
+
+       // return abbreviate(str, abbrevMarker, 0, maxWidth);
+
     }
 
     /**
